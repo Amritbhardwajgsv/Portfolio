@@ -1,5 +1,53 @@
-import {ArrowUpRight,BrainCircuit,CloudCog,Gauge,Route} from "lucide-react";import Section from "./section";
-const transitImage=new URL("../../public/transitops-home.png",import.meta.url);const drishtiImage=new URL("../../public/drishti.png",import.meta.url);const tenderImage=new URL("../../public/tender-agent-home.png",import.meta.url);
-const featured=[{number:"01",title:"TransitOps",eyebrow:"Role-based transport operations",date:"Jul 2026",image:transitImage.href,href:"https://oddohack.site/",icon:Route,stack:["React","Express.js","AWS EC2"],summary:"A unified fleet operations platform for fleet managers, drivers, safety officers, and financial analysts—covering the full vehicle, driver, and trip lifecycle.",details:["Database-driven depot dispatch with haversine distance matching","Automated license-expiry alerts and role onboarding with Nodemailer + node-cron","Document workflows with encoded file storage and role-based access","GitHub Actions deployment pipeline to AWS EC2"],metrics:[["4","user roles"],["1","live ops system"],["CI/CD","to EC2"]]},{number:"02",title:"DRISHTI",eyebrow:"Traffic intelligence platform",date:"2026",image:drishtiImage.href,href:"https://drishti-ex4s.onrender.com/",icon:BrainCircuit,stack:["FastAPI","Next.js","XGBoost"],summary:"An AI-assisted incident triage platform designed for Bengaluru Traffic Police, turning historical incident patterns into faster, more consistent response decisions.",details:["XGBoost models trained on 2,718 traffic incidents","Predicts incident priority, expected clearance time, and deployment requirements","Plans response needs across nine operational resource types","Presents model outputs through a production-ready decision dashboard"],metrics:[["2,718","incidents"],["9","resource types"],["AI","triage"]] }];
-const secondary=[{icon:Gauge,title:"Axle Counter",label:"Rail systems simulator",text:"Interactive railway axle-counter simulation with live section state, train movement, and detection logic.",tech:["TypeScript","React","Rail logic"],href:"https://axle-counter-simulator.onrender.com/"},{icon:CloudCog,title:"Tender Agent",label:"Resilient ingestion",text:"SQLite-backed queues and resumable multipart S3 uploads with automatic failure recovery.",tech:["TypeScript","AWS S3","SQLite"],image:tenderImage.href,href:"https://github.com/Amritbhardwajgsv/Tender_automation",linkLabel:"View code"}];
-export default function Projects(){return <Section id="projects" eyebrow="Selected work" title="Built for the messy, real world." lede="Detailed case studies where software meets transport, public safety, and production reliability."><div className="featured-projects">{featured.map(({icon:Icon,...p})=><article className="case-study" key={p.title}><a className="case-image" href={p.href} target="_blank" rel="noopener noreferrer"><img src={p.image} alt={p.title+" live application screenshot"}/><div className="case-stack">{p.stack.map(x=><span key={x}>{x}</span>)}</div><span>View live <ArrowUpRight size={18}/></span></a><div className="case-body"><div className="case-kicker"><span>{p.number} / {p.eyebrow}</span><span>{p.date}</span></div><div className="case-title"><Icon size={30}/><h3>{p.title}</h3></div><p className="case-summary">{p.summary}</p><ul>{p.details.map(x=><li key={x}>{x}</li>)}</ul><div className="case-metrics">{p.metrics.map(([n,l])=><div key={l}><strong>{n}</strong><span>{l}</span></div>)}</div><div className="case-footer"><div>{p.stack.map(x=><span key={x}>{x}</span>)}</div><a href={p.href} target="_blank" rel="noopener noreferrer">Open project <ArrowUpRight size={16}/></a></div></div></article>)}</div><div className="secondary-projects">{secondary.map(({icon:Icon,...p})=><article key={p.title}>{p.image&&<div className="secondary-image"><img src={p.image} alt={p.title+" application screenshot"}/><div className="case-stack">{p.tech.map(x=><span key={x}>{x}</span>)}</div></div>}<div><Icon size={24}/><span>{p.label}</span></div><h3>{p.title}</h3><p>{p.text}</p><footer>{p.tech.map(x=><span key={x}>{x}</span>)}</footer>{p.href&&<a className="secondary-link" href={p.href} target="_blank" rel="noopener noreferrer">{p.linkLabel||"View live"} <ArrowUpRight size={15}/></a>}</article>)}</div></Section>}
+import {ArrowUpRight,BrainCircuit,CloudCog,Route} from "lucide-react";
+import Section from "./section";
+
+const transitImage=new URL("../../public/transitops-home.png",import.meta.url);
+const drishtiImage=new URL("../../public/drishti.png",import.meta.url);
+
+const featured=[
+  {
+    number:"01",title:"DRISHTI",eyebrow:"Traffic intelligence platform",date:"2026",
+    image:drishtiImage.href,href:"https://drishti-ex4s.onrender.com/",icon:BrainCircuit,
+    stack:["FastAPI","Next.js","XGBoost"],
+    summary:"An AI-assisted incident triage platform for Bengaluru Traffic Police, turning historical incident patterns into faster, more consistent response decisions.",
+    details:["XGBoost models trained on 2,718 traffic incidents","Predicts incident priority, expected clearance time, and deployment requirements","Plans response needs across nine operational resource types","Presents model outputs through a production-ready decision dashboard"],
+    metrics:[["2,718","incidents"],["9","resource types"],["AI","triage"]]
+  },
+  {
+    number:"02",title:"TransitOps",eyebrow:"Role-based transport operations",date:"Jul 2026",
+    image:transitImage.href,href:"https://oddohack.site/",icon:Route,
+    stack:["React","Express.js","AWS EC2"],
+    summary:"A unified fleet operations platform for fleet managers, drivers, safety officers, and financial analysts—covering the full vehicle, driver, and trip lifecycle.",
+    details:["Database-driven depot dispatch with haversine distance matching","Automated license-expiry alerts and role onboarding with Nodemailer + node-cron","Document workflows with encoded file storage and role-based access","GitHub Actions deployment pipeline to AWS EC2"],
+    metrics:[["4","user roles"],["1","live ops system"],["CI/CD","to EC2"]]
+  }
+];
+
+const secondary={
+  title:"Tender Agent",label:"Resilient ingestion",
+  text:"SQLite-backed queues and resumable multipart S3 uploads with automatic failure recovery.",
+  tech:["TypeScript","AWS S3","SQLite"]
+};
+
+export default function Projects(){
+  return <Section id="projects" eyebrow="Selected work" title="Built for the messy, real world." lede="Detailed case studies where software meets transport, public safety, and production reliability.">
+    <div className="featured-projects">
+      {featured.map(({icon:Icon,...p})=><article className="case-study" key={p.title}>
+        <a className="case-image" href={p.href} target="_blank" rel="noopener noreferrer">
+          <img src={p.image} alt={p.title+" live application screenshot"}/><span>View live <ArrowUpRight size={18}/></span>
+        </a>
+        <div className="case-body">
+          <div className="case-kicker"><span>{p.number} / {p.eyebrow}</span><span>{p.date}</span></div>
+          <div className="case-title"><Icon size={30}/><h3>{p.title}</h3></div>
+          <p className="case-summary">{p.summary}</p>
+          <ul>{p.details.map(x=><li key={x}>{x}</li>)}</ul>
+          <div className="case-metrics">{p.metrics.map(([n,l])=><div key={l}><strong>{n}</strong><span>{l}</span></div>)}</div>
+          <div className="case-footer"><div>{p.stack.map(x=><span key={x}>{x}</span>)}</div><a href={p.href} target="_blank" rel="noopener noreferrer">Open project <ArrowUpRight size={16}/></a></div>
+        </div>
+      </article>)}
+    </div>
+    <div className="secondary-projects">
+      <article><div><CloudCog size={24}/><span>{secondary.label}</span></div><h3>{secondary.title}</h3><p>{secondary.text}</p><footer>{secondary.tech.map(x=><span key={x}>{x}</span>)}</footer></article>
+    </div>
+  </Section>
+}

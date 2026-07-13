@@ -127,3 +127,10 @@ body{overflow-x:hidden}
   .hero h1{font-size:44px}.nav-cta{font-size:7px;padding:9px}.hero-meta span{font-size:6px}.case-title h3{font-size:31px}
   .case-footer{display:block}.case-footer>a{margin-top:14px}.contact-card h2{font-size:38px}.vault-brand{transform:translate(-50%,-50%) scale(.63)}
 }
+
+/* Final palette alignment */
+.vault-intro{background:#171713}.vault-brand>span{color:#f3f0e8cc}.vault-progress span{color:#f3f0e899}.vault-intro>button{color:#f3f0e8aa}.secondary-projects{grid-template-columns:1fr}
+
+.vault-brand{padding:0;border:0;background:transparent;color:inherit;cursor:pointer}.vault-brand:hover strong,.vault-brand:focus-visible strong{filter:brightness(1.4);transform:scale(1.08)}.vault-brand:focus-visible{outline:2px solid #d7ff4f;outline-offset:18px;border-radius:50%}
+
+.vault-brand{pointer-events:auto}
