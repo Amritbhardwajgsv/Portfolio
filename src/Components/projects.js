@@ -1,4 +1,4 @@
-import {ArrowUpRight,BrainCircuit,CloudCog,Route} from "lucide-react";
+import {ArrowUpRight,BrainCircuit,CloudCog,Github,Route} from "lucide-react";
 import Section from "./section";
 
 const transitImage=new URL("../../public/transitops-home.png",import.meta.url);
@@ -17,16 +17,18 @@ const featured=[
     number:"02",title:"TransitOps",eyebrow:"Role-based transport operations",date:"Jul 2026",
     image:transitImage.href,href:"https://oddohack.site/",icon:Route,
     stack:["React","Express.js","AWS EC2"],
-    summary:"A unified fleet operations platform for fleet managers, drivers, safety officers, and financial analysts—covering the full vehicle, driver, and trip lifecycle.",
+    summary:"A unified fleet operations platform for fleet managers, drivers, safety officers, and financial analysts - covering the full vehicle, driver, and trip lifecycle.",
     details:["Database-driven depot dispatch with haversine distance matching","Automated license-expiry alerts and role onboarding with Nodemailer + node-cron","Document workflows with encoded file storage and role-based access","GitHub Actions deployment pipeline to AWS EC2"],
     metrics:[["4","user roles"],["1","live ops system"],["CI/CD","to EC2"]]
   }
 ];
 
 const secondary={
-  title:"Tender Agent",label:"Resilient ingestion",
+  title:"Tender Agent",
+  label:"Resilient ingestion",
   text:"SQLite-backed queues and resumable multipart S3 uploads with automatic failure recovery.",
-  tech:["TypeScript","AWS S3","SQLite"]
+  tech:["TypeScript","AWS S3","SQLite"],
+  href:"https://github.com/Amritbhardwajgsv/Tender_automation"
 };
 
 export default function Projects(){
@@ -47,7 +49,15 @@ export default function Projects(){
       </article>)}
     </div>
     <div className="secondary-projects">
-      <article><div><CloudCog size={24}/><span>{secondary.label}</span></div><h3>{secondary.title}</h3><p>{secondary.text}</p><footer>{secondary.tech.map(x=><span key={x}>{x}</span>)}</footer></article>
+      <article>
+        <div><CloudCog size={24}/><span>{secondary.label}</span></div>
+        <h3>{secondary.title}</h3>
+        <p>{secondary.text}</p>
+        <footer>{secondary.tech.map(x=><span key={x}>{x}</span>)}</footer>
+        <a className="secondary-link" href={secondary.href} target="_blank" rel="noopener noreferrer" aria-label="View Tender Agent source code on GitHub">
+          <Github size={15}/> View source on GitHub <ArrowUpRight size={15}/>
+        </a>
+      </article>
     </div>
-  </Section>
+  </Section>;
 }
