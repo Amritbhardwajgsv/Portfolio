@@ -4,7 +4,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html && node -e \"require('fs').copyFileSync('robots.txt','dist/robots.txt');require('fs').copyFileSync('sitemap.xml','dist/sitemap.xml')\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

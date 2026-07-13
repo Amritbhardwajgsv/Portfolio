@@ -1,5 +1,7 @@
 import { Linkedin, Twitter, Github, Mail, FileDown } from 'lucide-react';
 
+const resumeURL = new URL('../../public/resume.pdf', import.meta.url);
+
 export const SOCIAL_DATA = [
   {
     name: 'GitHub',
@@ -24,7 +26,7 @@ export const SOCIAL_DATA = [
   },
   {
     name: "Resume",
-    href: "/resume.pdf",
+    href: resumeURL.href,
     icon: FileDown
   }
 ];
