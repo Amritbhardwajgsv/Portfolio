@@ -10,5 +10,39 @@ import Activity from "./src/Components/activity";
 import Experience from "./src/Components/experience";
 import Contact from "./src/Components/contact";
 
-function App(){return <div className="site-shell"><EntryIntro/><Hero/><main><About/><Projects/><Skills/><Music/><Activity/><Experience/><Contact/></main></div>}
+const personSchema={
+  "@context":"https://schema.org",
+  "@type":"Person",
+  name:"Amrit Bhardwaj",
+  jobTitle:"Full-Stack & Applied AI Engineer",
+  email:"mailto:amritbharadwaj4@gmail.com",
+  url:"https://www.printamrit.online/",
+  sameAs:[
+    "https://github.com/Amritbhardwajgsv",
+    "https://www.linkedin.com/in/amrit-bhardwaj-50836528a/",
+    "https://x.com/print_amrit"
+  ],
+  knowsAbout:["Full-stack development","Applied AI","Machine learning","Real-time systems","Backend engineering"]
+};
+
+function StructuredData(){
+  React.useEffect(()=>{
+    const script=document.createElement("script");
+    script.id="person-json-ld";
+    script.type="application/ld+json";
+    script.text=JSON.stringify(personSchema);
+    document.head.appendChild(script);
+    return()=>script.remove();
+  },[]);
+  return null;
+}
+
+function App(){
+  return <div className="site-shell">
+    <StructuredData/>
+    <EntryIntro/><Hero/>
+    <main><About/><Projects/><Skills/><Music/><Activity/><Experience/><Contact/></main>
+  </div>;
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
