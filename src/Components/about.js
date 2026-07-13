@@ -1,3 +1,22 @@
-import { ArrowUpRight, Cpu, Radio, Workflow } from "lucide-react";import Section from "./section";
-const notes=[{icon:Workflow,label:"I connect the dots",text:"Product thinking, backend architecture, and ML in one delivery loop."},{icon:Radio,label:"I like live systems",text:"Real-time updates, resilient queues, and observable production behavior."},{icon:Cpu,label:"AI with a job to do",text:"Models grounded in real workflows—not demos searching for a use case."}];
-export default function About(){return <Section id="about" eyebrow="Profile" title="Engineer by training. Builder by instinct."><div className="about-layout"><div className="about-copy"><p className="about-lead">I’m a final-year Electronics &amp; Communication Engineering student at Gati Shakti Vishwavidyalaya, specializing in rail engineering.</p><p>My work lives where software meets real operations: real-time leaderboards, resumable S3 ingestion, multilingual ML triage, and social infrastructure. I care about the unglamorous details that make a product dependable.</p><a className="text-link" href="mailto:amritbharadwaj4@gmail.com">Let’s build something useful <ArrowUpRight size={17}/></a></div><div className="principles">{notes.map(({icon:Icon,label,text},i)=><article className="principle" key={label}><span>0{i+1}</span><Icon size={22}/><h3>{label}</h3><p>{text}</p></article>)}</div></div></Section>}
+import {ArrowUpRight,Cpu,Radio,Workflow} from "lucide-react";
+import Section from "./section";
+import DigitalClock from "./digitalClock";
+
+const notes=[
+  {icon:Workflow,label:"I connect the dots",text:"Product thinking, backend architecture, and ML in one delivery loop."},
+  {icon:Radio,label:"I like live systems",text:"Real-time updates, resilient queues, and observable production behavior."},
+  {icon:Cpu,label:"AI with a job to do",text:"Models grounded in real workflows - not demos searching for a use case."}
+];
+
+export default function About(){
+  return <Section id="about" eyebrow="Profile" title="Engineer by training. Builder by instinct." prelude={<DigitalClock/>}>
+    <div className="about-layout">
+      <div className="about-copy">
+        <p className="about-lead">I'm a final-year Electronics &amp; Communication Engineering student at Gati Shakti Vishwavidyalaya, specializing in rail engineering.</p>
+        <p>My work lives where software meets real operations: real-time leaderboards, resumable S3 ingestion, multilingual ML triage, and social infrastructure. I care about the unglamorous details that make a product dependable.</p>
+        <a className="text-link" href="mailto:amritbharadwaj4@gmail.com">Let's build something useful <ArrowUpRight size={17}/></a>
+      </div>
+      <div className="principles">{notes.map(({icon:Icon,label,text},i)=><article className="principle" key={label}><span>0{i+1}</span><Icon size={22}/><h3>{label}</h3><p>{text}</p></article>)}</div>
+    </div>
+  </Section>;
+}

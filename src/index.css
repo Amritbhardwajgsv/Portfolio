@@ -150,3 +150,19 @@ body{overflow-x:hidden}
   #experience .wins-title{margin-bottom:30px}.wins-title h3{font-size:25px}
   #experience .wins p{padding:18px 0;font-size:11px;line-height:1.5}.wins p:last-child{margin-top:auto}
 }
+
+/* Fix achievements board natural desktop height */
+@media(min-width:901px){
+  #experience .journey-layout{align-items:start}
+  #experience .wins{align-self:start;height:auto;min-height:0}
+  #experience .wins p:last-child{margin-top:0}
+}
+
+/* Compact live clock in section prelude */
+.section-wrap{position:relative}.section-prelude{position:absolute;right:0;top:36px}
+.digital-clock{min-width:168px;padding:12px 14px;background:var(--ink);color:var(--paper);border:1px solid var(--ink);box-shadow:5px 5px 0 var(--acid);font-family:ui-monospace,SFMono-Regular,monospace}
+.clock-live{display:flex;align-items:center;gap:6px;margin-bottom:7px;font-size:7px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#f3f0e899}.clock-live i{width:6px;height:6px;border-radius:50%;background:var(--acid);box-shadow:0 0 7px var(--acid);animation:clock-pulse 1.8s ease-in-out infinite}
+.digital-clock strong{display:block;font-size:21px;line-height:1;letter-spacing:.07em;color:var(--acid);font-variant-numeric:tabular-nums}.digital-clock small{display:block;margin-top:7px;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:#f3f0e899}
+@keyframes clock-pulse{50%{opacity:.35}}
+@media(max-width:640px){.section-prelude{top:18px}.digital-clock{min-width:145px;padding:9px 11px;box-shadow:3px 3px 0 var(--acid)}.digital-clock strong{font-size:17px}.clock-live{margin-bottom:5px}.digital-clock small{margin-top:5px}}
+@media(prefers-reduced-motion:reduce){.clock-live i{animation:none}}
