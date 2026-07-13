@@ -1,51 +1,12 @@
+import { ArrowDownRight, Circle, Download } from "lucide-react";
 import { SOCIAL_DATA } from "../utils/socials";
-
-const imageURL = new URL('../utils/image.png', import.meta.url);
-const resumeURL = new URL('../../public/resume.pdf', import.meta.url);
-
-export default function Hero() {
-  return (
-    <header className="max-w-[720px] mx-auto px-5 pt-16 pb-8">
-      <div className="flex items-center gap-4 mb-6">
-        <img
-          src={imageURL.href}
-          alt="Amrit Bhardwaj"
-          className="w-16 h-16 rounded-full object-cover border border-border shrink-0"
-        />
-        <div>
-          <h1 className="font-display font-bold text-[40px] leading-none tracking-[-0.02em] text-text-primary">
-            Amrit Bhardwaj
-          </h1>
-          <p className="font-mono text-sm text-text-secondary mt-2">
-            Full-Stack &amp; AI Engineer · Gati Shakti Vishwavidyalaya
-          </p>
-        </div>
-      </div>
-
-      <p className="text-[20px] text-text-secondary max-w-prose mb-6">
-        Building real-time backends, ML-driven platforms, and production systems.
-      </p>
-
-      <div className="flex gap-4">
-        {SOCIAL_DATA.map((social) => {
-          const Icon = social.icon;
-          const isResume = social.name.toLowerCase() === 'resume';
-
-          return (
-            <a
-              key={social.name}
-              href={isResume ? resumeURL.href : social.href}
-              download={isResume ? 'Amrit_Bhardwaj_Resume.pdf' : undefined}
-              target={isResume || social.isEmail ? "_self" : "_blank"}
-              rel={isResume || social.isEmail ? undefined : "noopener noreferrer"}
-              aria-label={social.name}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-md text-text-secondary hover:text-accent transition-colors duration-150"
-            >
-              <Icon size={20} strokeWidth={1.75} />
-            </a>
-          );
-        })}
-      </div>
-    </header>
-  );
-}
+const imageURL = new URL("../utils/image.png", import.meta.url);
+const resumeURL = new URL("../../public/resume.pdf", import.meta.url);
+const nav = [["Work","#projects"],["Stack","#skills"],["Sound","#soundtrack"],["Journey","#experience"],["Contact","#contact"]];
+export default function Hero(){
+return <header className="hero" id="top">
+  <nav className="topbar"><a className="monogram" href="#top">AB<span>.</span></a><div className="nav-links">{nav.map(([x,h])=><a key={h} href={h}>{x}</a>)}</div><a className="nav-cta" href="mailto:amritbharadwaj4@gmail.com"><Circle size={9} fill="currentColor"/> Available for work</a></nav>
+  <div className="hero-grid"><div className="hero-copy"><p className="kicker"><span>01</span> Full-stack + applied AI engineer</p><h1>I build systems that <em>think</em>, scale &amp; stay useful.</h1><p className="hero-intro">I’m Amrit—a product-minded engineer turning difficult operational problems into fast, dependable software.</p><div className="hero-actions"><a className="button primary" href="#projects">Explore my work <ArrowDownRight size={18}/></a><a className="button ghost" href={resumeURL.href} download="Amrit_Bhardwaj_Resume.pdf">Résumé <Download size={17}/></a></div></div>
+  <aside className="hero-aside"><div className="portrait-frame"><div className="portrait-label">Based in India · building worldwide</div><img src={imageURL.href} alt="Amrit Bhardwaj"/><div className="portrait-stamp">BUILD<br/>SHIP<br/>LEARN</div></div><div className="hero-meta"><div><strong>1726</strong><span>LeetCode max</span></div><div><strong>3+</strong><span>Production systems</span></div><div><strong>2026</strong><span>Graduating</span></div></div></aside></div>
+  <div className="social-strip"><span>Find me online</span>{SOCIAL_DATA.map(s=>{const Icon=s.icon,isResume=s.name.toLowerCase()==="resume";return <a key={s.name} href={isResume?resumeURL.href:s.href} download={isResume?"Amrit_Bhardwaj_Resume.pdf":undefined} target={isResume||s.isEmail?"_self":"_blank"} rel={isResume||s.isEmail?undefined:"noopener noreferrer"}><Icon size={16}/>{s.name}</a>})}</div>
+</header>}
