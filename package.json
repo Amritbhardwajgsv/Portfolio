@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "source":"index.html",
+  "source": "index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -16,12 +16,9 @@
     "react": "^19.2.3",
     "react-calendar-heatmap": "^1.10.0",
     "react-dom": "^19.2.3",
-    "react-redux": "^9.2.0",
-    "react-router": "^7.11.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "parcel": "^2.16.3",
-    "url": "^0.11.4"
+    "parcel": "^2.16.3"
   }
 }

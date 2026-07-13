@@ -1,28 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router"; 
-import Header from "./src/Components/header";
-import Navbar from "./src/Components/navbar";
+import Hero from "./src/Components/hero";
 import About from "./src/Components/about";
+import Projects from "./src/Components/projects";
+import Skills from "./src/Components/skills";
+import Activity from "./src/Components/activity";
 import Experience from "./src/Components/experience";
-import Stack from "./src/Components/stack";
-import Projects from "./src/Components/project";
-import Achievements from "./src/Components/achievement";
+import Contact from "./src/Components/contact";
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Header />
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<About/>} />
-                <Route path="/experience" element={<Experience/>}/>
-                <Route path="/stack" element={<Stack/>} />
-                <Route path="/projects" element={<Projects/>} />
-                <Route path="/achievements" element={<Achievements/>}/>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <>
+      <Hero />
+      <main>
+        <About />
+        <Projects />
+        <Skills />
+        <Activity />
+        <Experience />
+        <Contact />
+      </main>
+      <div className="max-w-[720px] mx-auto px-5 h-16" aria-hidden="true" />
+    </>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
