@@ -142,3 +142,11 @@ body{overflow-x:hidden}
 .entry-core{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(42vw,470px);aspect-ratio:1;border:1px solid var(--ink);border-radius:50%;background:var(--ink);color:var(--paper);cursor:pointer;box-shadow:14px 14px 0 var(--acid);transition:transform .25s,box-shadow .25s}.entry-core:hover,.entry-core:focus-visible{transform:translate(-6px,-6px);box-shadow:20px 20px 0 var(--acid);outline:0}.entry-core>span{font:900 clamp(90px,18vw,240px)/.75 Arial Black,Arial,sans-serif;letter-spacing:-.13em;color:var(--acid)}.entry-core small{margin-top:20px;font:700 10px ui-monospace,monospace;letter-spacing:.17em}.entry-intro.is-exiting{clip-path:inset(0 0 100% 0);pointer-events:none}.entry-intro.is-exiting .entry-core{transform:scale(1.35)}.entry-intro.is-exiting .entry-shapes i:nth-child(1){transform:translate(-30vw,-10vh) rotate(40deg)}.entry-intro.is-exiting .entry-shapes i:nth-child(2){transform:translate(30vw,15vh) rotate(-40deg)}.entry-intro.is-exiting .entry-shapes i:nth-child(3){transform:translate(10vw,-20vh) scale(.2)}
 @media(max-width:640px){.entry-top,.entry-bottom{left:18px;right:18px;font-size:7px}.entry-top{top:28px}.entry-bottom{bottom:28px}.entry-bottom span{max-width:180px;line-height:1.4}.entry-core{width:min(72vw,320px);box-shadow:9px 9px 0 var(--acid)}.entry-core>span{font-size:clamp(90px,27vw,140px)}.entry-core small{font-size:8px;margin-top:16px}.entry-shapes i:nth-child(1){width:42vw;height:42vw;left:-15vw;top:22vh}.entry-shapes i:nth-child(2){width:38vw;height:38vw;right:-15vw;bottom:19vh}.entry-shapes i:nth-child(3){width:20vw;height:20vw;right:12vw;top:17vh}}
 @media(prefers-reduced-motion:reduce){.entry-intro,.entry-shapes i,.entry-core{transition:none!important}}
+
+/* Wider desktop achievements board */
+@media(min-width:901px){
+  #experience .journey-layout{grid-template-columns:minmax(0,1fr) minmax(390px,.82fr);gap:5vw;align-items:stretch}
+  #experience .wins{align-self:stretch;display:flex;flex-direction:column;padding:36px 34px;transform:rotate(.6deg);box-shadow:11px 11px 0 var(--ink)}
+  #experience .wins-title{margin-bottom:30px}.wins-title h3{font-size:25px}
+  #experience .wins p{padding:18px 0;font-size:11px;line-height:1.5}.wins p:last-child{margin-top:auto}
+}

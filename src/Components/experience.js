@@ -35,7 +35,15 @@ const jobs=[
   }
 ];
 
-const wins=["LeetCode 1726 max rating · top 15%","Flipkart Gridathon · Round 2","Wabtec Exceed 3.0 · top 25 teams","TCS iON NQT · 89% Programming","NPTEL · DBMS + Machine Learning","Junior Scientist Award · NCSC"];
+const wins=[
+  "LeetCode 1726 max rating · top 15%",
+  "Codeforces Pupil · 1100+",
+  "Flipkart Gridathon · Round 2",
+  "Wabtec Exceed 3.0 · top 25 teams",
+  "TCS iON NQT · 89% Programming",
+  "NPTEL · DBMS + Machine Learning",
+  "Junior Scientist Award · NCSC"
+];
 
 export default function Experience(){
   return <Section id="experience" eyebrow="Journey" title="Learning in public. Delivering in production.">
