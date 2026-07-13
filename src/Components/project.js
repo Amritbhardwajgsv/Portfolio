@@ -1,37 +1,33 @@
+import SectionHeading from "./sectionHeading";
+
 export default function Projects() {
 
 const projects = [
 {
-title: "Psyplay – Chess Analysis Platform",
-tech: ["React", "TypeScript", "Node.js", "Chess Engine"],
-year: "2026",
-link: "https://github.com/Amritbhardwajgsv/psyplay",
+title: "DRISHTI: Traffic Intelligence Platform",
+tech: ["FastAPI", "Next.js", "XGBoost"],
 points: [
-"Developing an interactive chess analysis platform with move validation.",
-"Implemented drag-and-drop chess pieces using modern frontend libraries.",
-"Integrated backend engine evaluation to generate move efficiency and analysis graphs."
+"Built a full-stack AI triage system for Bengaluru Traffic Police, predicting incident priority, clearance time, and deployment needs from multilingual citizen complaints.",
+"Trained an XGBoost classifier/regressor on 2,718 traffic incidents using structural features fused with multilingual sentence embeddings.",
+"Built a MultiOutputRegressor predicting 9 resource targets (constables, units, barricades, etc.), wired to a weekly retraining pipeline."
 ]
 },
 {
-title: "Roomgi – Full Stack Web Application",
-tech: ["JavaScript", "Node.js", "Express", "MongoDB"],
-year: "2026",
-link: "https://github.com/Amritbhardwajgsv/roomgi",
+title: "Secure Tender Document Ingestion Agent",
+tech: ["TypeScript", "AWS S3", "SQLite"],
 points: [
-"Built a full-stack web application with REST APIs using Express.",
-"Implemented backend routing and middleware architecture.",
-"Focused on scalable server-side logic and database integration."
+"Built a Windows service that monitors document folders, validates files, and queues uploads durably via SQLite.",
+"Implemented resumable multipart S3 uploads with presigned URLs, ETag persistence, and automatic failure recovery.",
+"Added per-machine API-key authentication and structured logging."
 ]
 },
 {
-title: "House Price Prediction System",
-tech: ["Python", "Scikit-learn", "Machine Learning"],
-year: "2025",
-link: "https://github.com/Amritbhardwajgsv/housepricedetection",
+title: "Sosyo – Privacy-First Real-Time Social Networking Platform",
+tech: ["Express.js", "PostgreSQL", "Redis"],
 points: [
-"Developed a machine learning model to predict housing prices in Bangalore.",
-"Performed feature engineering and preprocessing on housing datasets.",
-"Implemented regression models using Python and Scikit-learn."
+"Built a location-aware social platform with user discovery, mutual friendships, private messaging, and presence tracking.",
+"Designed a scalable backend with Node.js, Express.js, PostgreSQL, and Redis, using JWT auth, OTP verification, and role-based access.",
+"Engineered real-time messaging architecture with typing indicators, read receipts, and Redis-backed caching."
 ]
 }
 ];
@@ -39,11 +35,15 @@ points: [
 return (
   <section className="w-full flex flex-col items-center py-10 sm:py-14 bg-amber-50 px-4 sm:px-8">
 
-    <div className="flex flex-col gap-8 sm:gap-10 w-full max-w-4xl">
+    <SectionHeading accent="bg-red-300">PROJECTS</SectionHeading>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full max-w-5xl">
     {projects.map((proj, index) => (
       <div
         key={index}
-        className="bg-white border-4 border-black p-8 shadow-[8px_8px_0px_black]"
+        className={`bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_black] transition-transform duration-200 hover:-translate-y-1 hover:rotate-0 ${
+          index === 0 ? "md:col-span-2" : ""
+        } ${index % 2 === 0 ? "-rotate-1" : "rotate-1"}`}
       >
 
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
@@ -55,7 +55,7 @@ return (
               {proj.tech.map((t, i) => (
                 <span
                   key={i}
-                  className="bg-blue-200 border border-black px-2 py-1 text-xs font-mono"
+                  className="bg-blue-200 border-2 border-black px-2 py-1 text-xs font-mono shadow-[3px_3px_0px_black]"
                 >
                   {t}
                 </span>
@@ -63,22 +63,28 @@ return (
             </div>
           </div>
 
-          <div className="flex flex-col items-end gap-2">
+          {proj.year || proj.link ? (
+            <div className="flex flex-col items-end gap-2">
 
-            <span className="bg-purple-300 border border-black px-2 py-2 text-sm font-mono">
-              {proj.year}
-            </span>
+              {proj.year && (
+                <span className="bg-purple-300 border-2 border-black px-2 py-2 text-sm font-mono shadow-[3px_3px_0px_black]">
+                  {proj.year}
+                </span>
+              )}
 
-            <a
-              href={proj.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-black p-1 rounded hover:bg-gray-100"
-            >
-              ↗
-            </a>
+              {proj.link && (
+                <a
+                  href={proj.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-black p-1 rounded hover:bg-gray-100"
+                >
+                  ↗
+                </a>
+              )}
 
-          </div>
+            </div>
+          ) : null}
 
         </div>
 

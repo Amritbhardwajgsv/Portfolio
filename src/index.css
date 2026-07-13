@@ -14,3 +14,25 @@ body {
   box-sizing: border-box;
 }
 
+/* Space for the fixed bottom tab bar on mobile so it never covers content. */
+@media (max-width: 639px) {
+  body {
+    padding-bottom: 4.75rem;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 16s linear infinite;
+}
+
