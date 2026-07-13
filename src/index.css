@@ -166,3 +166,5 @@ body{overflow-x:hidden}
 @keyframes clock-pulse{50%{opacity:.35}}
 @media(max-width:640px){.section-prelude{top:18px}.digital-clock{min-width:145px;padding:9px 11px;box-shadow:3px 3px 0 var(--acid)}.digital-clock strong{font-size:17px}.clock-live{margin-bottom:5px}.digital-clock small{margin-top:5px}}
 @media(prefers-reduced-motion:reduce){.clock-live i{animation:none}}
+
+.section-prelude{left:50%;right:auto;transform:translateX(-50%)}
