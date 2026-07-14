@@ -45,7 +45,11 @@ export default function Music(){
     <div className="music-player" style={{"--record-accent":track.color}}>
       <div className="turntable">
         <div className={"vinyl "+(started?"spinning":"")}><div className="vinyl-rings"/><div className="vinyl-label"><Disc3 size={32}/><span>AB</span></div></div>
-        <div className="tonearm"><i/></div><p>{started?"Now spinning":"Ready to spin"} / Side A</p>
+        <div key={track.id} className={"tonearm "+(started?"engaged":"")}><i/></div>
+        <p className={started?"is-playing":""}>
+          <span className="sound-bars" aria-hidden="true"><i/><i/><i/></span>
+          {started?"Now spinning":"Ready to spin"} / Side A
+        </p>
       </div>
       <div className="music-console">
         <div className="music-heading"><span><Headphones size={18}/> Energy rotation</span><strong>{String(active+1).padStart(2,"0")} / {String(tracks.length).padStart(2,"0")}</strong></div>
