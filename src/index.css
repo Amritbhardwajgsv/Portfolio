@@ -220,3 +220,6 @@ body{overflow-x:hidden}
 @media(prefers-reduced-motion:reduce){.vertical-stack .wallet-card{transition:none}.vertical-stack .wallet-card.active.leaving{animation-duration:.01ms}}
 .wallet-shell>p{display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-transform:uppercase}.wallet-shell>p strong{font:800 10px/1 ui-monospace,monospace;letter-spacing:.08em;color:#fff2eb}.wallet-shell>p span{font:700 6px/1 ui-monospace,monospace;letter-spacing:.1em;color:#f2b8a5}
 @media(max-width:420px){.wallet-shell>p{gap:4px}.wallet-shell>p strong{font-size:8px}.wallet-shell>p span{font-size:5px}}
+/* Draggable turntable tonearm */
+.tonearm,.tonearm.engaged{transform:rotate(var(--arm-angle,18deg));cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}.tonearm.dragging{animation:none;transition:none;cursor:grabbing}.tonearm:focus-visible{outline:3px solid var(--paper);outline-offset:7px}.tonearm:focus-visible:before{box-shadow:0 0 0 4px var(--record-accent),0 0 0 7px var(--ink)}
+@media(prefers-reduced-motion:reduce){.tonearm,.tonearm.engaged{transform:rotate(var(--arm-angle,18deg));transition:none}}
