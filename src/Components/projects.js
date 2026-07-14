@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect,useRef,useState} from "react";
 import {ArrowRight,ArrowUpRight,BrainCircuit,CloudCog,Github,Route} from "lucide-react";
 import Section from "./section";
 
@@ -34,22 +34,45 @@ const secondary={
 
 export default function Projects(){
   const [active,setActive]=useState(0);
+  const [leaving,setLeaving]=useState(false);
+  const gestureStart=useRef(null);
+  const transitionLock=useRef(false);
+  const transitionTimer=useRef(null);
   const project=featured[active];
   const ProjectIcon=project.icon;
+  const ordered=featured.map((_,offset)=>({item:featured[(active+offset)%featured.length],index:(active+offset)%featured.length}));
+
+  useEffect(()=>()=>clearTimeout(transitionTimer.current),[]);
+
+  const advanceProject=()=>{
+    if(transitionLock.current)return;
+    transitionLock.current=true;
+    setLeaving(true);
+    transitionTimer.current=setTimeout(()=>{
+      setActive(index=>(index+1)%featured.length);
+      setLeaving(false);
+      transitionLock.current=false;
+    },430);
+  };
+
+  const finishGesture=event=>{
+    if(gestureStart.current!==null&&gestureStart.current-event.clientY>32)advanceProject();
+    gestureStart.current=null;
+  };
 
   return <Section id="projects" eyebrow="Selected work" title="Built for the messy, real world." lede="Detailed case studies where software meets transport, public safety, and production reliability.">
     <div className="project-wallet">
       <aside className="wallet-shell" aria-label="Featured project wallet">
-        <div className="wallet-heading"><span>Project wallet <em>Swipe</em></span><strong>{String(active+1).padStart(2,"0")} / {String(featured.length).padStart(2,"0")}</strong></div>
-        <div className="wallet-slots">
-          {featured.map((item,index)=><button type="button" className={"wallet-card "+(index===active?"active":"")} style={{"--wallet-accent":item.accent}} key={item.title} onClick={()=>setActive(index)} aria-pressed={index===active} aria-controls="open-project-card">
+        <div className="wallet-heading"><span>Project wallet <em>Swipe up</em></span><strong>{String(active+1).padStart(2,"0")} / {String(featured.length).padStart(2,"0")}</strong></div>
+        <div className="wallet-slots vertical-stack">
+          {ordered.map(({item,index},offset)=><button type="button" className={"wallet-card "+(offset===0?"active ":"queued ")+(offset===0&&leaving?"leaving":"")} style={{"--wallet-accent":item.accent,"--stack-index":offset}} key={item.title} onClick={()=>offset===0?advanceProject():setActive(index)} onPointerDown={offset===0?event=>{gestureStart.current=event.clientY}:undefined} onPointerUp={offset===0?finishGesture:undefined} onPointerCancel={()=>{gestureStart.current=null}} aria-label={offset===0?"Swipe up or tap to show the next project":"Select "+item.title} aria-pressed={offset===0} aria-controls="open-project-card">
             <img src={item.image} alt=""/>
             <span>{item.number} / {item.eyebrow}</span>
             <strong>{item.title}</strong>
-            <small>{index===active?"Open now":"Pull out"}<ArrowRight size={14}/></small>
+            <small>{offset===0?"Swipe up / Tap":"Next project"}<ArrowRight size={14}/></small>
           </button>)}
         </div>
-        <p>Select a card to pull it out.</p>
+        <p><strong>My vault consists of</strong><span>Swipe the top card up.</span></p>
       </aside>
       <article id="open-project-card" className="case-study wallet-open-card" key={project.title} aria-live="polite">
         <a className="case-image" href={project.href} target="_blank" rel="noopener noreferrer">
