@@ -22,7 +22,7 @@ const personSchema={
     "https://www.linkedin.com/in/amrit-bhardwaj-50836528a/",
     "https://x.com/print_amrit"
   ],
-  knowsAbout:["Full-stack development","Applied AI","Machine learning","Real-time systems","Backend engineering"]
+  knowsAbout:["Full-stack development","Applied AI","Machine learning","Real-time systems","Backend engineering","Gsv","Gati Shakti Vishwavidyalaya"]
 };
 
 function StructuredData(){
